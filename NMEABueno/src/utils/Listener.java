@@ -2,6 +2,8 @@ package utils;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import net.sf.marineapi.nmea.event.AbstractSentenceListener;
 import net.sf.marineapi.nmea.io.SentenceReader;
 import net.sf.marineapi.nmea.sentence.*;
@@ -10,6 +12,7 @@ import net.sf.marineapi.nmea.util.Measurement;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class Listener {
 
@@ -81,9 +84,39 @@ public class Listener {
         return TEMP;
     }
 
+    private final ObservableList<Double> windSpeedObsList =
+            FXCollections.observableList(new ArrayList<>());
+
+    public ObservableList<Double> getWindSpeedObservableList(){
+        return windSpeedObsList;
+    }
+
+    private final ObservableList<Double> windDirectionObsList =
+            FXCollections.observableList(new ArrayList<>());
+
+    public ObservableList<Double> getWindDirectionObservableList(){
+        return windDirectionObsList;
+    }
+
+    private int maximumData = 120;
+
+    public void setGraphsInterval(int minutes){
+        maximumData = minutes * 60;
+    }
+
     class MDASentenceListener extends AbstractSentenceListener<MDASentence> {
         @Override
         public void sentenceRead(MDASentence mdaSentence) {
+            if(windSpeedObsList.size() >= maximumData){
+                windSpeedObsList.clear();
+            }
+            if(windDirectionObsList.size() >= maximumData){
+                windDirectionObsList.clear();
+            }
+
+            windSpeedObsList.add(mdaSentence.getWindSpeed());
+            windDirectionObsList.add(mdaSentence.getTrueWindDirection());
+
             TWD.set(mdaSentence.getTrueWindDirection());
             TWS.set(mdaSentence.getWindSpeed());
             TEMP.set(mdaSentence.getAirTemperature());
