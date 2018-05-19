@@ -22,6 +22,7 @@ public class NMEA extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
+        
         File selectedFile = WindowManager.createFileChooser();
         if(selectedFile != null){
             InicioController i = WindowManager.createInicioWindow();

@@ -26,7 +26,6 @@
             <Button fx:id="botonDireccion1" mnemonicParsing="false" onAction="#direccion" text="DIRECCION" />
             <Button fx:id="botonGraficos1" mnemonicParsing="false" onAction="#graficos" text="GRAFICOS" />
             <Button fx:id="botonModo1" mnemonicParsing="false" onAction="#modo" text="MODO NOCTURNO/DIURNO" />
-            <Button fx:id="botonCargar1" mnemonicParsing="false" onAction="#cargar" text="CARGAR FICHERO" />
          </children>
       </HBox>
       <GridPane alignment="CENTER" hgap="6.0" minHeight="-Infinity" minWidth="-Infinity" vgap="24.0">

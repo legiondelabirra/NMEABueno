@@ -11,6 +11,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import utils.Listener;
@@ -33,8 +34,6 @@ public class direccionController implements Initializable {
     private Button botonGraficos1;
     @FXML
     private Button botonModo1;
-    @FXML
-    private Button botonCargar1;
     @FXML
     private Label pitchLabel;
     @FXML
@@ -96,9 +95,6 @@ public class direccionController implements Initializable {
     private void modo(ActionEvent event) {
     }
 
-    @FXML
-    private void cargar(ActionEvent event) {
-    }
 
    
     

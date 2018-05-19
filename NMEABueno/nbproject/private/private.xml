@@ -4,10 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Pau%20Castelló/Documents/NetBeansProjects/NMEABueno/NMEABueno/src/utils/WindowManager.java</file>
+            <file>file:/C:/Users/Pau%20Castelló/Documents/NetBeansProjects/NMEABueno/NMEABueno/src/utils/Listener.java</file>
             <file>file:/C:/Users/Pau%20Castelló/Documents/NetBeansProjects/NMEABueno/NMEABueno/src/view/direccionController.java</file>
             <file>file:/C:/Users/Pau%20Castelló/Documents/NetBeansProjects/NMEABueno/NMEABueno/src/view/generalController.java</file>
             <file>file:/C:/Users/Pau%20Castelló/Documents/NetBeansProjects/NMEABueno/NMEABueno/src/view/InicioController.java</file>
             <file>file:/C:/Users/Pau%20Castelló/Documents/NetBeansProjects/NMEABueno/NMEABueno/src/view/vientoController.java</file>
+            <file>file:/C:/Users/Pau%20Castelló/Documents/NetBeansProjects/NMEABueno/NMEABueno/src/view/NMEA.java</file>
             <file>file:/C:/Users/Pau%20Castelló/Documents/NetBeansProjects/NMEABueno/NMEABueno/src/view/graficosController.java</file>
         </group>
     </open-files>

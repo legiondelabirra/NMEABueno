@@ -96,8 +96,5 @@ public class vientoController implements Initializable {
     private void modo(ActionEvent event) {
     }
 
-    @FXML
-    private void cargar(ActionEvent event) {
-    }
     
 }
