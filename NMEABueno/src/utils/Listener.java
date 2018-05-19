@@ -47,7 +47,6 @@ public class Listener {
             reader.addSentenceListener(rmc);
             reader.start();
         }catch (Exception e){}
-
     }
 
     public void stopListening(){
@@ -213,6 +212,7 @@ public class Listener {
     class RMCSentenceListener extends AbstractSentenceListener<RMCSentence> {
         @Override
         public void sentenceRead(RMCSentence rmcSentence) {
+            System.out.println("ausgkasufgkausgf");
             SOG.set(rmcSentence.getSpeed());
             COG.set(rmcSentence.getCourse());
             LAT.set(rmcSentence.getPosition().getLatitude());

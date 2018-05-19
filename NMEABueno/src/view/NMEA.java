@@ -5,11 +5,14 @@
  */
 package view;
 
+import java.io.File;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import utils.Listener;
+import utils.WindowManager;
 
 /**
  *
@@ -19,12 +22,11 @@ public class NMEA extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("1inicio.fxml"));
-        
-        Scene scene = new Scene(root);
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();
+        File selectedFile = WindowManager.createFileChooser();
+        if(selectedFile != null){
+            InicioController i = WindowManager.createInicioWindow();
+            i.init(selectedFile);
+        }
     }
 
     /**

@@ -5,17 +5,13 @@
  */
 package view;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.stage.Window;
-import utils.Listener;
 import utils.WindowManager;
 
 /**
@@ -23,20 +19,24 @@ import utils.WindowManager;
  *
  * @author Pau Castelló
  */
-public class InicioController implements Initializable {
+public class graficosController implements Initializable {
 
     @FXML
-    private Button botonGeneral;
+    private Button botonGeneral1;
     @FXML
-    private Button botonViento;
+    private Button botonViento1;
     @FXML
-    private Button botonDireccion;
+    private Button botonDireccion1;
     @FXML
-    private Button botonGraficos;
+    private Button botonGraficos1;
     @FXML
-    private Button botonModo;
+    private Button botonModo1;
     @FXML
-    private Button botonCargar;
+    private Button botonCargar1;
+    @FXML
+    private LineChart<?, ?> direccion;
+    @FXML
+    private LineChart<?, ?> intensidad;
 
     /**
      * Initializes the controller class.
@@ -45,14 +45,8 @@ public class InicioController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
-    public void init(File file){
-        Platform.runLater(() -> {
-            Listener.getInstance().readFile(file);
-        });
-    }
 
-    @FXML
+         @FXML
     private void general(ActionEvent event) {
         WindowManager.moveToGeneralWindow();
     }
@@ -79,7 +73,5 @@ public class InicioController implements Initializable {
     @FXML
     private void cargar(ActionEvent event) {
     }
-
-    
     
 }

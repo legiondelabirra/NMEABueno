@@ -5,7 +5,6 @@
  */
 package view;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -14,7 +13,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.Window;
 import utils.Listener;
 import utils.WindowManager;
 
@@ -23,7 +21,7 @@ import utils.WindowManager;
  *
  * @author Pau Castelló
  */
-public class InicioController implements Initializable {
+public class generalController implements Initializable {
 
     @FXML
     private Button botonGeneral;
@@ -36,7 +34,13 @@ public class InicioController implements Initializable {
     @FXML
     private Button botonModo;
     @FXML
-    private Button botonCargar;
+    private Label longitudLabel;
+    @FXML
+    private Label temperaturaLabel;
+    @FXML
+    private Label latitudLabel;
+    @FXML
+    private Label sogLabel;
 
     /**
      * Initializes the controller class.
@@ -44,15 +48,30 @@ public class InicioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
-    public void init(File file){
-        Platform.runLater(() -> {
-            Listener.getInstance().readFile(file);
+        Listener.getInstance().SOGProperty().addListener((observable, oldValue, newValue) -> {
+            Platform.runLater(() -> {
+                sogLabel.setText(newValue.toString() + " KM/H");
+            });
         });
-    }
+        Listener.getInstance().TEMPProperty().addListener((observable, oldValue, newValue) -> {
+            Platform.runLater(() -> {
+                temperaturaLabel.setText(String.format("%.2f ºC", newValue.doubleValue()));
+            });
+        });
+        Listener.getInstance().LONProperty().addListener((observable, oldValue, newValue) -> {
+            Platform.runLater(() -> {
+                longitudLabel.setText(String.format("%.2f º", newValue.doubleValue()));
+            });
+        });
+        Listener.getInstance().LATProperty().addListener((observable, oldValue, newValue) -> {
+            Platform.runLater(() -> {
+               latitudLabel.setText(String.format("%.2f ºC", newValue.doubleValue()));
+            });
+        });
+        
+    }    
 
-    @FXML
+         @FXML
     private void general(ActionEvent event) {
         WindowManager.moveToGeneralWindow();
     }
@@ -75,11 +94,4 @@ public class InicioController implements Initializable {
     @FXML
     private void modo(ActionEvent event) {
     }
-
-    @FXML
-    private void cargar(ActionEvent event) {
-    }
-
-    
-    
 }
