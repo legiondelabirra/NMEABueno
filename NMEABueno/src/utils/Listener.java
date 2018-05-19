@@ -4,6 +4,9 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import net.sf.marineapi.nmea.event.AbstractSentenceListener;
 import net.sf.marineapi.nmea.io.SentenceReader;
 import net.sf.marineapi.nmea.sentence.*;
@@ -87,15 +90,29 @@ public class Listener {
     private final ObservableList<Double> windSpeedObsList =
             FXCollections.observableList(new ArrayList<>());
 
-    public ObservableList<Double> getWindSpeedObservableList(){
-        return windSpeedObsList;
+    public XYChart.Series<Number, Number> getWindSpeedData(){
+        XYChart.Series<Number, Number> series = new XYChart.Series<>();
+        int i = 0;
+        for(Double d : windSpeedObsList){
+            series.getData().add(new XYChart.Data<>(i, d));
+            i++;
+        }
+
+        return series;
     }
 
     private final ObservableList<Double> windDirectionObsList =
             FXCollections.observableList(new ArrayList<>());
 
-    public ObservableList<Double> getWindDirectionObservableList(){
-        return windDirectionObsList;
+    public XYChart.Series<Number, Number> getWindDirectionData(){
+        XYChart.Series<Number, Number> series = new XYChart.Series<>();
+        int i = 0;
+        for(Double d : windDirectionObsList){
+            series.getData().add(new XYChart.Data<>(i, d));
+            i++;
+        }
+
+        return series;
     }
 
     private int maximumData = 120;
